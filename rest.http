@@ -1,0 +1,60 @@
+@url= http://localhost:8000/api/v1
+
+POST {{url}}/user/login
+Content-type:application/json
+
+{  
+# "fname":"hshs",
+# "lname":"hshs",
+"email":"test1@gmail.com",
+"password":"4321"
+}
+
+###
+GET {{url}}/user/user-profile
+Content-type:application/json
+
+{  
+
+
+"password":"4321"
+}
+
+
+### POST Request to Submit Form Data
+POST http://localhost:8000/api/v1/form
+Content-Type: application/json
+
+{
+  "personalDetails": {
+    "fullname": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "1234567890"
+  },
+  "income": {
+    "salary": 50000,
+    "otherIncome": 5000
+  },
+  "expenses": {
+    "rent": 1200,
+    "utilities": 300,
+    "otherExpenses": 200
+  },
+  "assets": [
+    {
+      "type": "House",
+      "value": 250000
+    }
+  ],
+  "liabilities": [
+    {
+      "type": "Mortgage",
+      "amount": 200000
+    }
+  ]
+}
+
+
+###
+GET http://localhost:8000/api/v1/form
+Content-Type: application/json
