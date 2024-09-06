@@ -17,7 +17,6 @@ Make sure you have nodejs and npm installed on your machine.
 
 2. Clone the repository:
 
-   ```bash
    npm i 
    
 3. Clone the repository:
@@ -25,7 +24,6 @@ Make sure you have nodejs and npm installed on your machine.
 
 ## Runing Application
 
- ```bash
  npm run dev 
 
 
