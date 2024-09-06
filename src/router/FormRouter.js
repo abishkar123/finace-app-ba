@@ -7,7 +7,7 @@ const router = express.Router()
 router.post("/", async (req, res, next) => {
     try {
       
-        const {name, userid, ...rest} = req.body
+        const {name, ...rest} = req.body
         console.log(req.body)
         const result = await createApplication(req.body);
         
