@@ -8,7 +8,14 @@ const app = express();
 
 app.use(express.json()); 
 app.use(morgan('dev')); 
-app.use(cors()); 
+
+// Allow cross-origin requests
+app.use(cors({
+  origin: 'http://fa-app-bucket.s3-website-ap-southeast-2.amazonaws.com', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+  credentials: true, 
+}));
 
 
 const PORT = process.env.PORT || 8000;
