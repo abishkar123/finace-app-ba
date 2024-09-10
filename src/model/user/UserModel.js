@@ -10,3 +10,9 @@ export const getUser = ()=>{
     return UserSchema.findOne();
     
 }
+
+export const findUser = (filter)=>{
+    return UserSchema.findOne(filter);
+}
+
+

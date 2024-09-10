@@ -75,21 +75,21 @@ router.post("/login", async(req, res, next)=>{
 })
 
 //getuser 
-// router.get("/user-profile", async(req,res, next)=>{
-//   try {
-//     const users = await getUser()
+router.get("/user-profile", async(req,res, next)=>{
+  try {
+    const users = await getUser()
 
-//     res.status(200).json({
-//       status: "Success",
-//       message:"user found",
-//       users,
-//     })
+    res.status(200).json({
+      status: "Success",
+      message:"user found",
+      users,
+    })
     
-//   } catch (error) {
-//     next(error)
+  } catch (error) {
+    next(error)
     
-//   }
-// })
+  }
+})
 
 
 export default router
