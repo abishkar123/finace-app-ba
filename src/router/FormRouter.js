@@ -8,11 +8,10 @@ router.post("/", async (req, res, next) => {
     try {
       
         const {name, ...rest} = req.body
-        console.log(req.body)
         const result = await createApplication(req.body);
         
         if (result?._id) {
-          return res.status(200).json({
+          return res.status(201).json({
             status: "success",
             message: "Successfully Your application Submit!",
             result,
@@ -38,7 +37,7 @@ router.get("/",async (req, res, next )=>{
     
     try{
         const lists = await getAppliation();
-        res.status(200).json({
+        res.status(201).json({
             status:"success",
             message:"Here is the application lists",
             lists,
@@ -57,7 +56,7 @@ router.delete("/", async (req, res, next) => {
     const ids = req.body;
    
     if (!Array.isArray(ids)) {
-      return res.status(400).json({
+      return res.status(405).json({
         status: "error",
         message: "Invalid input. Expected an array of IDs.",
       });
@@ -65,7 +64,7 @@ router.delete("/", async (req, res, next) => {
     const { deletedCount } = await deleteApplications(ids);
 
     deletedCount
-      ? res.status(200).json({
+      ? res.status(201).json({
           status: "success",
           message: "Selected Application has been deleted.",
         })
@@ -83,20 +82,17 @@ router.put( "/", async (req, res, next) => {
     try {
   
       const { _id, ...rest } = req.body;
-     
-      console.log(req.body)
-      console.log(_id)
 
       const result = await updateApplication(_id, req.body);
 
       if (result?._id) {
-        return res.json({
+        return res.status(201).json({
           status: "success",
           message: "The Applcation has been Updated!",
         });
       }
 
-      res.json({
+      res.status(405).json({
         status: "error",
         message: "Error updating new Applicaiton, contact administration",
       });
