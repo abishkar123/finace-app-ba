@@ -34,17 +34,39 @@ router.post("/", async (req, res, next) => {
 
   //Get Application 
 router.get("/",async (req, res, next )=>{
-    
+    const page = parseInt(req.query.page)
+    const limit = parseInt(req.query.limit)
+
+    if(isNaN(page)|| isNaN(limit)){
+      return res.status(405).json({
+        status:"error",
+        message:"page and limit must be positive interger. "})
+    }
+
+    if(page <= 0 || limit <= 0) {
+      return res.status(405).json({ 
+        status: 'error', 
+        message: 'Page and limit must be positive integers.' });
+    }
+
     try{
-        const lists = await getAppliation();
+      const { lists, totalItems, totalPages, currentPage } = await getAppliation(page, limit);
+
         res.status(201).json({
             status:"success",
             message:"Here is the application lists",
             lists,
+            totalItems,
+            totalPages,
+            currentPage
         })
 
+       
+
     }catch(error){
-        next(error);
+      if (!res.headersSent) {
+        next(error); 
+      }
     }
 })
 
