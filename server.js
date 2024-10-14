@@ -13,11 +13,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 8000;
 
-//datatbase connnect
 import {connectDB} from './src/config/dbConfig.js'
 connectDB()
 
-//APIs
 import UserRouter from './src/router/UserRouter.js'
 app.use("/api/v1/user", UserRouter)
 
